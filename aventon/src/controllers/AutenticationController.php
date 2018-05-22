@@ -33,11 +33,15 @@ public function login(){
 		SessionHelper::validateSession();
 		header('Location: /aventon');
 	}catch(SessionException $e){
-		$aux = $this->db->select("select * from aventon_usuario ");
-		SessionHelper::openSession();
-		$smTemplate = new SMTemplate();
-		$smTemplate->render("home");
-		header('Location: /aventon');
+		$user = UsuarioService::findUser($_POST["user_name"], $_POST["user_pass"]);
+		//echo $user;
+		if($user != null){
+			SessionHelper::openSession();	
+			SessionHelper::setUser($user);
+			header('Location: /aventon');
+		}else{
+			header('Location: /aventon/authentication');
+		}			
 	}	
 }
 
@@ -46,7 +50,6 @@ public function logout(){
 	header('Location: /aventon');
 
 }
-
 }
 
 

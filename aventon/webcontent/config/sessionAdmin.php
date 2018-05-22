@@ -18,6 +18,21 @@ class SessionHelper{
 		
 		unset($_SESSION['login'] );
 	}
+	public function getUser(){
+		return $_SESSION["USER"];
+	}
+	public function setUser($user){
+		$_SESSION[$key] = serialize($value);
+	}
+	public function putInSession($key, $value){
+		$_SESSION[$key] = $value;
+	}
+	public function getInSession($key){
+		return $_SESSION[$key];
+	}
+	public function deleteInSession($key){
+		unset($_SESSION[$key]);
+	}
 
 }
 

@@ -13,14 +13,14 @@ class Db{
 	}
 	
 	public function query($query){
-		$connection = $this->connect();
+		$connection = self::connect();
 		$result = $connection->query($query);
 		return $result;
 	}
 	
 	public function select($query){
 		$rows = array();
-		$result = $this->query($query);
+		$result = self::query($query);
 		if($result === false){
 			return false;
 		}
@@ -31,12 +31,12 @@ class Db{
 	}
 	
 	public function error(){
-		$connection = $this->connect();
+		$connection = self::connect();
 		return $connection->error;
 	}
 	
 	public function quote($value){
-		$connection = $this->connect();
+		$connection = self::connect();
 		return "'".$connection->real_escape_string($value)."'";
 	}
 	

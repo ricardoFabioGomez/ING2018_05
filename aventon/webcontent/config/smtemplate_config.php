@@ -16,9 +16,14 @@ class SMTemplate{
 		}
 		$content = $this->_smarty->fetch($template.'.tpl');
 		$this->_smarty->assign('__content', $content);
+		if(SessionHelper::getUser() != null){
+		   $this->_smarty->assign('USER', SessionHelper::getUser());
+		}
+		
 		$this->_smarty->assign('isSessionActive',SessionHelper::existSession() );
 		$this->_smarty->display('layout.tpl');
 	}
+	
 }
 
 
