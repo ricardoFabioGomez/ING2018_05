@@ -13,17 +13,15 @@
     <!-- Bootstrap core CSS -->
     <link href="/aventon/webcontent/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Custom styles for this template -->
-    <link href="/aventon/webcontent/css/heroic-features.css" rel="stylesheet">
-	<link href="/aventon/webcontent/css/date/bootstrap-datetimepicker.min.css" rel="stylesheet">
-	<link href="/aventon/webcontent/css/date/bootstrap-datetimepicker-standalone.min.css" rel="stylesheet">
+	<link href="/aventon/webcontent/css/heroic-features.css" rel="stylesheet">
+	<link href="/aventon/webcontent/css/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
 	
 	 <!-- Bootstrap core JavaScript -->
     <script src="/aventon/webcontent/js/jquery.min.js"></script>
-	<script src="/aventon/webcontent/js/moment.min.js"></script>
-    <script src="/aventon/webcontent/js/es-us.js"></script>
 	<script src="/aventon/webcontent/js/bootstrap.bundle.min.js"></script>
-	<script src="/aventon/webcontent/js/bootstrap-datetimepicker.min.js"></script>
+
 	
   </head>
 
@@ -43,12 +41,12 @@
             </li>
 			{if ! $isSessionActive }
             <li class="nav-item">
-              <a class="nav-link" href="/aventon/authentication">Login</a>
+              <a class="nav-link" href="/aventon/authentication">Login <span class="oi oi-account-login"></span></a>
             </li>
 			{/if}
 			{if  $isSessionActive }
 			<li class="nav-item">
-              <a class="nav-link" href="*">Crear Viaje</a>
+              <a class="nav-link" href="#">Crear Viaje</a>
             </li>
 			<li class="nav-item dropdown">	
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,9 +56,9 @@
 				  
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				  <a class="dropdown-item" href="#">Ver mi perfil</a>
+				  <a class="dropdown-item" href="/aventon/verPerfil">Ver mi perfil</a>
 				  <a class="dropdown-item" href="#">Ver mis Viajes</a>
-				  <a class="dropdown-item" href="#">Ver mis Vehiculos</a>
+				  <a class="dropdown-item" href="/aventon/vehiculo">Ver mis Vehiculos</a>
 				  <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="/aventon/authentication/logout">Salir</a>
 				</div>

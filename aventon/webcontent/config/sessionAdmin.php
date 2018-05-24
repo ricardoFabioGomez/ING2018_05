@@ -10,19 +10,22 @@ class SessionHelper{
 		return isset($_SESSION['login']);
 	}
 	
-	public function openSession(){
+	public function openSession($user){
 		
 		$_SESSION['login'] = true;
+		$_SESSION['USER'] = $user;
 	}
 	public function closeSession(){
 		
 		unset($_SESSION['login'] );
+		unset($_SESSION['USER'] );
 	}
 	public function getUser(){
-		return $_SESSION["USER"];
-	}
-	public function setUser($user){
-		$_SESSION[$key] = serialize($value);
+		if(isset($_SESSION["USER"])){
+			return $_SESSION["USER"];
+		}
+		return null;
+		
 	}
 	public function putInSession($key, $value){
 		$_SESSION[$key] = $value;

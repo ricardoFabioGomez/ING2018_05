@@ -14,7 +14,7 @@ public function execute($simpleUrl){
 		break;
 		case "error" : $this->error();
 		break;		
-		default : echo "error 404";
+		default :throw new NotFoundException();
 	}
 }
 

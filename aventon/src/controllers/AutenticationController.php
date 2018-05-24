@@ -14,7 +14,7 @@ public function execute($simpleUrl){
 		break;
 		case "logout" : $this->logout();
 		break;
-		default : echo "error 404";
+		default : throw new NotFoundException();
 	}
 }
 
@@ -36,8 +36,7 @@ public function login(){
 		$user = UsuarioService::findUser($_POST["user_name"], $_POST["user_pass"]);
 		//echo $user;
 		if($user != null){
-			SessionHelper::openSession();	
-			SessionHelper::setUser($user);
+			SessionHelper::openSession($user);	
 			header('Location: /aventon');
 		}else{
 			header('Location: /aventon/authentication');

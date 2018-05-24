@@ -1,10 +1,10 @@
 <?php
-class SessionException extends Exception{
+class NotFoundException extends Exception{
    public function __construct() {
         // algo de código
     
         // asegúrese de que todo está asignado apropiadamente
-        parent::__construct("SESION EXPIRED", 500, null);
+        parent::__construct("PAGE NOT FOUND", 404, null);
     }
 
     // representación de cadena personalizada del objeto

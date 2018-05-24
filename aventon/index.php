@@ -12,19 +12,24 @@
 	include WEBCONTENT.'/config/smtemplate_config.php';
 	include WEBCONTENT.'/config/db_config.php';
 	include SRC.'/exceptions/SessionException.php';
+	include SRC.'/exceptions/NotFoundException.php';
 	
 	include 'SimpleUrl.php';
 	include 'Route.php';
 	//DAOS
 	include SRC.'/model/UsuarioDTO.php';
+	include SRC.'/model/VehiculoDTO.php';
 	
 	//service
 	include SRC.'/transaction/UsuarioService.php';
+	include SRC.'/transaction/VehiculoService.php';
 	//controllers
 	include SRC.'/controllers/GenericController.php';
 	include SRC.'/controllers/HomeController.php';
 	include SRC.'/controllers/AutenticationController.php';
 	include SRC.'/controllers/RegistroController.php';
+	include SRC.'/controllers/vehiculoController.php';
+	include SRC.'/controllers/PerfilController.php';
 	//libreria smarty
 	include WEBCONTENT.'/lib/smarty-3.1.32/libs/Smarty.class.php';
 	//se abre la sesion
@@ -36,7 +41,17 @@
 	$route->add('/home', new HomeController());
 	$route->add('/authentication', new AuthenticationController());
 	$route->add('/registracion', new RegistroController());
-	$route->submit();
+	$route->add('/vehiculo', new VehiculoController());
+	$route->add('/verPerfil', new PerfilController());
+	try{
+		$route->submit();	
+		
+	}catch(SessionException $e){
+		header('Location: /aventon/authentication');
+	}catch(NotFoundException $e){
+		echo "404 NOT FOUND";
+	}
+	
 	
 	
 	

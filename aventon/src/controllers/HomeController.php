@@ -11,7 +11,7 @@ public function execute($simpleUrl){
 		$smTemplate = new SMTemplate();
 		$smTemplate->render("home");	
 		break;
-		default : echo "error 404";
+		default : throw new NotFoundException();
 	}
 	
 }

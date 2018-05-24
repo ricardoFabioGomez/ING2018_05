@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-22 18:08:38
+/* Smarty version 3.1.32, created on 2018-05-24 21:48:15
   from 'C:\xampp\htdocs\aventon\webcontent\view\registroOK.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0440869ee528_60735309',
+  'unifunc' => 'content_5b0716ff6f51f3_38066215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0440869ee528_60735309 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0716ff6f51f3_38066215 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- Page Content -->
     <div class="container">
       <!-- Portfolio Item Row -->
