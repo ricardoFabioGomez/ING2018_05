@@ -22,20 +22,35 @@ class UsuarioService{
 			return null;
 		}
 	}
-	
+	public function findUserById($userId){
+		//valido los parametros que no contengan codigo malisioso
+		$query = "select * from aventon_usuario where user_id = $userId";
+		//echo $query;
+		$result = Db::select($query);
+		//print_r($result);
+		if($result != null && !empty($result)){
+			return new UsuarioDTO($result[0]);
+		}
+		else{
+			return null;
+		}
+	}
 	public function insertUser($user){
 		$user->setUser(Db::quote($user->getUser()));
 		$user->setPassword(Db::quote($user->getPassword()));
 		$user->setNombre(Db::quote($user->getNombre()));
 		$user->setApellido(Db::quote($user->getApellido()));
-		$user->setFechaNaci(Db::quote($user->getFechaNaci()));
+		$format = "d/m/Y";
+		$time = DateTime::createFromFormat($format, $user->getFechaNaci());
+		$time = $time->format('Y-m-d');
+
 		$user->setDni(Db::quote($user->getDni()));
 		$user->setTelefono(Db::quote($user->getTelefono()));
 		$user->setDireccion(Db::quote($user->getDireccion()));
 		$user->setDepto(Db::quote($user->getDepto()));
 		$user->setEmail(Db::quote($user->getEmail()));
 		$query = "INSERT INTO aventon_usuario (user, password, nombre, apellido, fecha_naci, dni, telefono, direccion, depto, email)".
-				 "VALUES ('".$user->getUser()."',". $user->getPassword().",". $user->getNombre().",". $user->getApellido().",".$user->getFechaNaci().",".
+				 "VALUES ('".$user->getUser()."',". $user->getPassword().",". $user->getNombre().",". $user->getApellido().",'".$time."',".
 				 $user->getDni().",".$user->getTelefono().",".$user->getDireccion().",". $user->getDepto().",". $user->getEmail().")";
 		$result = Db::query($query);
 		echo $result;

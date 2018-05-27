@@ -19,10 +19,12 @@
 	//DAOS
 	include SRC.'/model/UsuarioDTO.php';
 	include SRC.'/model/VehiculoDTO.php';
+	include SRC.'/model/ViajeDTO.php';
 	
 	//service
 	include SRC.'/transaction/UsuarioService.php';
 	include SRC.'/transaction/VehiculoService.php';
+	include SRC.'/transaction/ViajeService.php';
 	//controllers
 	include SRC.'/controllers/GenericController.php';
 	include SRC.'/controllers/HomeController.php';
@@ -30,6 +32,7 @@
 	include SRC.'/controllers/RegistroController.php';
 	include SRC.'/controllers/vehiculoController.php';
 	include SRC.'/controllers/PerfilController.php';
+	include SRC.'/controllers/ViajeController.php';
 	//libreria smarty
 	include WEBCONTENT.'/lib/smarty-3.1.32/libs/Smarty.class.php';
 	//se abre la sesion
@@ -43,6 +46,7 @@
 	$route->add('/registracion', new RegistroController());
 	$route->add('/vehiculo', new VehiculoController());
 	$route->add('/verPerfil', new PerfilController());
+	$route->add('/viaje', new ViajeController());
 	try{
 		$route->submit();	
 		

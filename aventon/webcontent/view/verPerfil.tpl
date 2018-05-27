@@ -3,7 +3,9 @@
       <!-- Portfolio Item Row -->
 	  	
       <div class="row justify-content-md-center">
-
+		<div class="col-6		my-4 mb-8 border h50">
+			algo
+		</div>
         <div class="col-6		my-4 mb-8 border">
 			
 			<form action="/aventon/registracion/guardar" method="post">
@@ -27,7 +29,7 @@
 			  </div>
 			  <div class="form-group row">
 				<label for="fecha_naci" class="col col-form-label">Fecha de Nacimiento</label>
-				<input type="text" class="form-control-plaintext col" readonly  name="fecha_naci" id="fecha_naci" value="{$USER->getFechaNaci()}" >
+				<input type="text" class="form-control-plaintext col" readonly  name="fecha_naci" id="fecha_naci" value="{$fechaNaci}" >
 			  </div>
 			  <div class="form-group row">
 				<label for="dni" class="col col-form-label">Dni</label>
@@ -50,8 +52,7 @@
 				<input type="text" class="form-control-plaintext col" readonly  name="email" id="email" value="{$USER->getEmail()}" >
 			  </div>
 			  
-			  <input type="submit" class="btn btn-primary" value="Actualizar"> 
-
+			  
 			</form>
 			
         </div>

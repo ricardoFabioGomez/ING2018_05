@@ -20,7 +20,7 @@ public function execute($simpleUrl){
 
 public function verPantallaIncio(){
 	$smTemplate = new SMTemplate();
-	$smTemplate->render("registro");
+	$smTemplate->render("registro",["USER_FORM" => new UsuarioDTO()]);
 }
 public function guardar(){
 	try{
@@ -55,9 +55,6 @@ public function error(){
 		$smTemplate = new SMTemplate();
 		
 		$smTemplate->render("registro", ["IS_Error" => true, "USER_ERROR"=>$userError, "USER_FORM" => $userForm]);	
-		//SessionHelper::deleteInSession('USER_ERROR'); 
-		//SessionHelper::deleteInSession('USER_FORM'); 
-		
 	}	
 }
 

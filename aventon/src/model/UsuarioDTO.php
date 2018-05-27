@@ -19,19 +19,22 @@ class UsuarioDTO implements Serializable{
 	private $depto;
 	private $email;
 
-	public function __construct($userDDB){
-		if(isset($userDDB["user_id"]))
+	public function __construct($userDDB = null){
+		if($userDDB != null){
+			if(isset($userDDB["user_id"]))
 			$this->userId=$userDDB["user_id"];
-		$this->user=$userDDB["user"];
-		$this->password=$userDDB["password"];
-		$this->nombre=$userDDB["nombre"];
-		$this->apellido=$userDDB["apellido"];
-		$this->fechaNaci=$userDDB["fecha_naci"];
-		$this->dni=$userDDB["dni"];
-		$this->telefono=$userDDB["telefono"];
-		$this->direccion=$userDDB["direccion"];
-		$this->depto=$userDDB["depto"];
-		$this->email=$userDDB["email"];
+			$this->user=$userDDB["user"];
+			$this->password=$userDDB["password"];
+			$this->nombre=$userDDB["nombre"];
+			$this->apellido=$userDDB["apellido"];
+			$this->fechaNaci=$userDDB["fecha_naci"];
+			$this->dni=$userDDB["dni"];
+			$this->telefono=$userDDB["telefono"];
+			$this->direccion=$userDDB["direccion"];
+			$this->depto=$userDDB["depto"];
+			$this->email=$userDDB["email"];	
+		}
+		
 	}
 	
 	public function getUserId(){

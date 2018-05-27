@@ -9,6 +9,44 @@ class ViajeDTO{
 	private $tipoViaje;
 	private $idVehiculo;
 	private $idUsuario;
+	private $usuario;
+	private $costo;
+	private $tiempo_estimado;
+	public function __construct($viajeDDB = null){
+		if($viajeDDB != null){
+			if(isset($viajeDDB["id"])){
+				$this->id = $viajeDDB["id"];
+			}
+			$this->origen = $viajeDDB["origen"];
+			$this->destino= $viajeDDB["destino"];
+			$this->fecha= $viajeDDB["fecha"];
+			$this->hora= $viajeDDB["hora"];
+			$this->idVehiculo= $viajeDDB["id_vehiculo"];
+			$this->costo= $viajeDDB["costo"];
+			$this->tiempoEstimado= $viajeDDB["tiempo_estimado"];
+			if(isset($viajeDDB["id_usuario"])){
+				$this->idUsuario = $viajeDDB["id_usuario"];
+			}
+		}
+	}
+	public function getTiempoEstimado(){
+		return $this->tiempoEstimado;
+	}
+	public function setTiempoEstimado($tiempoEstimado){
+		$this->tiempoEstimado = $tiempoEstimado;
+	}
+	public function getCosto(){
+		return $this->costo;
+	}
+	public function setCosto($costo){
+		$this->costo = $costo;
+	}
+	public function getUsuario(){
+		return $this->usuario;
+	}
+	 public function setUsuario($usuario){
+		$this->usuario = $usuario;
+	}
 	public function getId(){
 		return $this->id;
 	}

@@ -15,59 +15,34 @@
 
       <!-- Page Features -->
       <div class="row text-center">
-
-        <div class="col-lg-3 col-md-6 mb-4">
+		{if !empty($viajes)}
+		{foreach from=$viajes item=viaje}
+		<div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+			<div class="card-header">
+			{$viaje->getUsuario()->getNombre()}
+			</div>
             <div class="card-body">
-              <h4 class="card-title">Viaje 1</h4>
-              <p class="card-text">INFORMACION RESUMIDA DEL VIAJE</p>
+              <p class="card-text">
+			  <h6>Origen :</h6> {$viaje->getOrigen()}
+			  </p>
+			  <p class="card-text">
+			  <h6>Origen :</h6>{$viaje->getDestino()}
+			  </p>
+			  <p class="card-text">
+			  <h6>Origen :</h6> {$viaje->getFecha()}
+			  </p>
+			  <p class="card-text"><h6>Origen :</h6>
+			  {$viaje->getHora()}
+			  </p>
             </div>
             <div class="card-footer">
               <a href="#" class="btn btn-primary">Ver Más</a>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Viaje 2</h4>
-              <p class="card-text">INFORMACION RESUMIDA DEL VIAJE</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Viaje 3</h4>
-              <p class="card-text">INFORMACION RESUMIDA DEL VIAJE</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Viaje 4</h4>
-              <p class="card-text">INFORMACION RESUMIDA DEL VIAJE</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Más</a>
-            </div>
-          </div>
-        </div>
-
+		{/foreach}
+		{/if}
       </div>
       <!-- /.row -->
 

@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/aventon/webcontent/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/aventon/webcontent/css/jquery-ui.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
@@ -20,8 +21,19 @@
 	
 	 <!-- Bootstrap core JavaScript -->
     <script src="/aventon/webcontent/js/jquery.min.js"></script>
+	<script src="/aventon/webcontent/js/jquery-ui.js"></script>
 	<script src="/aventon/webcontent/js/bootstrap.bundle.min.js"></script>
-
+	<script>
+		function mostrarAviso(mensajes){
+			$("#mensajeModal").children().remove();
+			$.each(mensajes,function(key, value){
+				$("#mensajeModal").append("<p>" + value + "</p>");	
+			})
+			
+			$("#myModal").modal();
+		}
+		
+	</script>
 	
   </head>
 
@@ -46,7 +58,7 @@
 			{/if}
 			{if  $isSessionActive }
 			<li class="nav-item">
-              <a class="nav-link" href="#">Crear Viaje</a>
+              <a class="nav-link" href="/aventon/viaje">Crear Viaje</a>
             </li>
 			<li class="nav-item dropdown">	
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,7 +69,7 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				  <a class="dropdown-item" href="/aventon/verPerfil">Ver mi perfil</a>
-				  <a class="dropdown-item" href="#">Ver mis Viajes</a>
+				  <a class="dropdown-item" href="/aventon/viaje">Ver mis Viajes</a>
 				  <a class="dropdown-item" href="/aventon/vehiculo">Ver mis Vehiculos</a>
 				  <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="/aventon/authentication/logout">Salir</a>
@@ -71,12 +83,29 @@
 	
 	{$__content}
 
-    <!-- Footer -->
     <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Aventon.com 2018</p>
-      </div>
-      <!-- /.container -->
+     	<!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h4 class="modal-title">Notificacion</h4>
+				</div>
+				<div class="modal-body" id="mensajeModal">
+				  
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			  
+			</div>
+		</div>	
+    <!-- Footer -->
+	    
+
     </footer>
 
    

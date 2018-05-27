@@ -16,8 +16,13 @@ class PerfilController extends GenericController{
 	}
 
 	public function verPantallaIncio(){
+		$user = SessionHelper::getUser();
 		$smTemplate = new SMTemplate();
-		$smTemplate->render("verPerfil", ["USER"=>SessionHelper::getUser()]);
+		$format = 'Y-m-d';
+		$time = DateTime::createFromFormat($format, $user->getFechaNaci());
+		$time = $time->format("d/m/Y");
+
+		$smTemplate->render("verPerfil", ["USER"=>$user, "fechaNaci" =>$time]);
 	}
 
 }

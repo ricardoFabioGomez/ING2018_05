@@ -3,19 +3,19 @@ class VehiculoService{
 	public function insertVehiculo($vehiculo){
 		$query = "INSERT INTO aventon_vehiculo (patente,modelo,marca,cant_pasajeros,id_usuario)".
 		  "VALUES ('".$vehiculo->getPatente()."','". $vehiculo->getModelo()."','". $vehiculo->getMarca()."',". $vehiculo->getCantPasajero().",". $vehiculo->getIdUsuario().")"; 
-		  echo $query;
 		$result = Db::query($query); //usar para delete insert update
 		echo $result;
 		
 	}
-	public function buscarVehiculo($idUsuarioParam){
-		$idUsuario = Db::quote($idUsuarioParam);
+	public function buscarVehiculos($idUsuarioParam){
 		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam ";
-		echo $query;
 		$result = Db::select($query);
-		echo '<br>';
-		print_r($result);
-		//print_r($this->_controllers);
+		$vehiculos = array();
+		foreach($result as $vehiculoDDb){
+			$vehiculos[] = new VehiculoDTO($vehiculoDDb);
+			
+		}
+		return $vehiculos;
 	}
 	public function eliminarVehiculo($idParam){
 		$id = Db::quote($idParam);
@@ -27,9 +27,26 @@ class VehiculoService{
 		$id = $idParam;
 		$idUsuario = $idUsuarioParam;
 		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam and id = $idParam ";
-		echo $query;
 		$result = Db::select($query);
-		print_r($result);
+		if($result != null && !empty($result)){
+			return new VehiculoDTO($result[0]);
+		}
+		else{
+			return null;
+		}
+		
+	}
+	
+	public function existPatente($patenteParam, $idUsuarioParam){
+		$patente = Db::quote($patenteParam);
+		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam and patente = $patente";
+		$result = Db::select($query);
+		if($result != null && !empty($result)){
+			return new VehiculoDTO($result[0]);
+		}
+		else{
+			return null;
+		}
 	}
 	
 }

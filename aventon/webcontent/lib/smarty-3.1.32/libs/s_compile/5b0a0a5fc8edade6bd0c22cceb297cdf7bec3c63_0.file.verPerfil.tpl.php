@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-24 05:47:34
+/* Smarty version 3.1.32, created on 2018-05-27 04:50:44
   from 'C:\xampp\htdocs\aventon\webcontent\view\verPerfil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0635d6e57f11_91876029',
+  'unifunc' => 'content_5b0a1d042138d2_56990288',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5b0a0a5fc8edade6bd0c22cceb297cdf7bec3c63' => 
     array (
       0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\verPerfil.tpl',
-      1 => 1527131619,
+      1 => 1527389440,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0635d6e57f11_91876029 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0a1d042138d2_56990288 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- Page Content -->
     <div class="container">
       <!-- Portfolio Item Row -->
 	  	
       <div class="row justify-content-md-center">
-
+		<div class="col-6		my-4 mb-8 border h50">
+			algo
+		</div>
         <div class="col-6		my-4 mb-8 border">
 			
 			<form action="/aventon/registracion/guardar" method="post">
@@ -52,7 +54,7 @@ function content_5b0635d6e57f11_91876029 (Smarty_Internal_Template $_smarty_tpl)
 			  </div>
 			  <div class="form-group row">
 				<label for="fecha_naci" class="col col-form-label">Fecha de Nacimiento</label>
-				<input type="text" class="form-control-plaintext col" readonly  name="fecha_naci" id="fecha_naci" value="<?php echo $_smarty_tpl->tpl_vars['USER']->value->getFechaNaci();?>
+				<input type="text" class="form-control-plaintext col" readonly  name="fecha_naci" id="fecha_naci" value="<?php echo $_smarty_tpl->tpl_vars['fechaNaci']->value;?>
 " >
 			  </div>
 			  <div class="form-group row">
@@ -81,8 +83,7 @@ function content_5b0635d6e57f11_91876029 (Smarty_Internal_Template $_smarty_tpl)
 " >
 			  </div>
 			  
-			  <input type="submit" class="btn btn-primary" value="Actualizar"> 
-
+			  
 			</form>
 			
         </div>

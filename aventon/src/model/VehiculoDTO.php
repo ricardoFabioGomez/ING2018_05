@@ -7,17 +7,20 @@ class VehiculoDTO{
 	private $cantPasajero;
 	private $idUsuario;
 	
-	public function __construct($vehiculoDDB){
-		if(isset($vehiculoDDB["id"])){
+	public function __construct($vehiculoDDB = null){
+		if($vehiculoDDB != null){
+			if(isset($vehiculoDDB["id"])){
 			$this->id = $vehiculoDDB["id"];
+			}
+			$this->patente = $vehiculoDDB["patente"];
+			$this->modelo= $vehiculoDDB["modelo"];
+			$this->marca= $vehiculoDDB["marca"];
+			$this->cantPasajero= $vehiculoDDB["cant_pasajeros"];
+			if(isset($vehiculoDDB["id_usuario"])){
+				$this->idUsuario= $vehiculoDDB["id_usuario"];
+			}	
 		}
-		$this->patente = $vehiculoDDB["patente"];
-		$this->modelo= $vehiculoDDB["modelo"];
-		$this->marca= $vehiculoDDB["marca"];
-		$this->cantPasajero= $vehiculoDDB["cant_pasajeros"];
-		if(isset($vehiculoDDB["id_usuario"])){
-			$this->idUsuario= $vehiculoDDB["id_usuario"];
-		}
+		
 	}
 	public function getId(){
 		return $this->id;

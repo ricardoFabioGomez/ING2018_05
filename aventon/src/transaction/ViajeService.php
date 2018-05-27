@@ -2,12 +2,24 @@
 class ViajeService{
 	public function insertViaje($viaje){
 		$query = "INSERT INTO aventon_viaje
-		(codigo,fecha,hora,origen,destino,tipo_viaje,id_vehiculo,id_usuario)".
-		  "VALUES (".$viaje->getCodigo().",'".$viaje->getFecha()."','".$viaje->getHora()."','".$viaje->getOrigen()."','".$viaje->getDestino()."','".$viaje->getTipoViaje()."',".$viaje->getIdVehiculo().",".$viaje->getIdUsuario().")";
+		(fecha,hora,origen,destino,tipo_viaje,id_vehiculo,id_usuario)".
+		  "VALUES ('".$viaje->getFecha()."','".$viaje->getHora()."','".$viaje->getOrigen()."','".$viaje->getDestino()."','".$viaje->getTipoViaje()."',".$viaje->getIdVehiculo().",".$viaje->getIdUsuario().")";
 		  echo $query;
 		$result = Db::query($query); //usar para delete insert update
 		echo $result;
 	}
+	
+	public function buscarTodos(){ //consultar si va codigo o si es igual a id..
+
+		$query="select * from aventon_viaje";
+		$result = Db::select($query);
+		$viajes = array();
+		foreach($result as $viajeDDb){
+			$viajes[] = new ViajeDTO($viajeDDb);
+		}
+		return $viajes;
+	}	
+	
 	public function buscarViaje($codigoParam){ //consultar si va codigo o si es igual a id..
 		$codigo = Db::quote($codigoParam);
 		$query="select * from aventon_viaje where codigo = $codigoParam ";
