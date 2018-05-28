@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-27 01:28:08
+/* Smarty version 3.1.32, created on 2018-05-28 06:26:40
   from 'C:\xampp\htdocs\aventon\webcontent\view\layout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b09ed88352c64_34922282',
+  'unifunc' => 'content_5b0b8500c3f758_24224510',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '95ba536e2a6c82b78aab4d3751451b4a62d5ac80' => 
     array (
       0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\layout.tpl',
-      1 => 1527377124,
+      1 => 1527481596,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b09ed88352c64_34922282 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0b8500c3f758_24224510 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +31,7 @@ function content_5b09ed88352c64_34922282 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>Aventon - Grupo35</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/aventon/webcontent/css/bootstrap.min.css" rel="stylesheet">
@@ -102,7 +102,7 @@ function content_5b09ed88352c64_34922282 (Smarty_Internal_Template $_smarty_tpl)
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				  <a class="dropdown-item" href="/aventon/verPerfil">Ver mi perfil</a>
-				  <a class="dropdown-item" href="/aventon/viaje">Ver mis Viajes</a>
+				  <a class="dropdown-item" href="/aventon/viaje/listarViajes">Ver mis Viajes</a>
 				  <a class="dropdown-item" href="/aventon/vehiculo">Ver mis Vehiculos</a>
 				  <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="/aventon/authentication/logout">Salir</a>

@@ -4,9 +4,18 @@ class VehiculoService{
 		$query = "INSERT INTO aventon_vehiculo (patente,modelo,marca,cant_pasajeros,id_usuario)".
 		  "VALUES ('".$vehiculo->getPatente()."','". $vehiculo->getModelo()."','". $vehiculo->getMarca()."',". $vehiculo->getCantPasajero().",". $vehiculo->getIdUsuario().")"; 
 		$result = Db::query($query); //usar para delete insert update
-		echo $result;
+		
 		
 	}
+	public function modificarVehiculo($vehiculo){
+		$query ="UPDATE aventon_vehiculo SET modelo='".$vehiculo->getModelo().
+		"', marca='". $vehiculo->getMarca().
+		"', cant_pasajeros=". $vehiculo->getCantPasajero().
+		" WHERE  id=". $vehiculo->getId();
+		$result = Db::query($query); //usar para delete insert update
+		
+	}
+	
 	public function buscarVehiculos($idUsuarioParam){
 		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam ";
 		$result = Db::select($query);

@@ -33,6 +33,13 @@
 	  
     </div>
 	<script>
+		$(document).ready(function(){
+			{if isset($error)}
+			var mensaje =  new Array();
+			mensaje[mensaje.length] = "Usuario incorrecto";
+			mostrarAviso(mensaje);	
+			{/if}
+		});
 		function validarCampos(){
 			var mensaje =  new Array();
 			

@@ -21,6 +21,18 @@ public function execute($simpleUrl){
 		break;
 		case "guardar" :  $this->guardar();
 		break;
+		case "verVehiculo" : 
+			$idVehiculo = $simpleUrl->segment(3);
+			if(is_numeric($idVehiculo)) {
+				
+				$this->verVehiculo($idVehiculo);	
+			 }else{
+			
+				 throw new NotFoundException();
+			 }
+		break;
+		case "modificar" :  $this->modificar();
+		break;
 		default : throw new NotFoundException();
 	}
 }
@@ -48,6 +60,23 @@ public function eliminar($idVehiculo){
 	}
 	
 }
+public function verVehiculo($idVehiculo){
+	$user = SessionHelper::getUser();
+	$vehiculo = VehiculoService::obtenerVehiculo($idVehiculo,$user->getUserId());
+	if($vehiculo != null){			
+		$smTemplate = new SMTemplate();
+		$smTemplate->render("modificarVehiculo",["vehiculo" => $vehiculo]);
+	}
+	else{
+		throw new NotFoundException();
+	}
+}
+public function modificar(){
+	$vehiculo = new VehiculoDTO($_POST);
+	VehiculoService::modificarVehiculo($vehiculo);
+	header('Location: /aventon/vehiculo');
+	
+}
 public function guardar(){
 	$vehiculo = new VehiculoDTO($_POST);
 	$user = SessionHelper::getUser();
@@ -60,7 +89,7 @@ public function guardar(){
 	else{//ERROR
 		$vehiculos = VehiculoService::buscarVehiculos($user->getUserId());	
 		$smTemplate = new SMTemplate();
-		$smTemplate->render("verVehiculos",["vehiculos" => $vehiculos,"vehiculo"=>$vehiculo]);
+		$smTemplate->render("verVehiculos",["error"=>true,"vehiculos" => $vehiculos,"vehiculo"=>$vehiculo]);
 			
 	}
 	

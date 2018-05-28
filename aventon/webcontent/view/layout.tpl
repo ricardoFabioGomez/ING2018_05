@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>Aventon - Grupo35</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/aventon/webcontent/css/bootstrap.min.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				  <a class="dropdown-item" href="/aventon/verPerfil">Ver mi perfil</a>
-				  <a class="dropdown-item" href="/aventon/viaje">Ver mis Viajes</a>
+				  <a class="dropdown-item" href="/aventon/viaje/listarViajes">Ver mis Viajes</a>
 				  <a class="dropdown-item" href="/aventon/vehiculo">Ver mis Vehiculos</a>
 				  <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="/aventon/authentication/logout">Salir</a>

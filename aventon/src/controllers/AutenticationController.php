@@ -24,7 +24,12 @@ public function init(){
 		header('Location: /aventon');
 	}catch(SessionException $e){
 		$smTemplate = new SMTemplate();
-		$smTemplate->render("login");
+		$error = SessionHelper::getInSession("error");
+		$smTemplate->render("login", ["error"=>$error]);
+		
+		SessionHelper::deleteInSession("error");	
+		
+		
 	}
 	
 }
@@ -39,6 +44,7 @@ public function login(){
 			SessionHelper::openSession($user);	
 			header('Location: /aventon');
 		}else{
+			SessionHelper::putInSession("error", true);
 			header('Location: /aventon/authentication');
 		}			
 	}	

@@ -2,9 +2,10 @@
     <div class="container">
       <!-- Portfolio Item Row -->
 	  	
-      <div class="row justify-content-md-center">
-		<div class="col-6		my-4 mb-8 border h50">
-			algo
+      <div class="row ">
+		<div class="col-3 my-4 mb-8 border mr-4 h-50">
+			
+			<img class="m-2" src="/aventon/webcontent/img/default/avatar.jpg">
 		</div>
         <div class="col-6		my-4 mb-8 border">
 			

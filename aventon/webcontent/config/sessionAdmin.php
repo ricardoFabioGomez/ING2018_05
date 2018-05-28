@@ -31,10 +31,17 @@ class SessionHelper{
 		$_SESSION[$key] = $value;
 	}
 	public function getInSession($key){
+		if(isset($_SESSION[$key])){
 		return $_SESSION[$key];
+		}else{
+			return null;
+		}
 	}
 	public function deleteInSession($key){
-		unset($_SESSION[$key]);
+		if(isset($_SESSION[$key])){
+			unset($_SESSION[$key]);	
+		}
+		
 	}
 
 }

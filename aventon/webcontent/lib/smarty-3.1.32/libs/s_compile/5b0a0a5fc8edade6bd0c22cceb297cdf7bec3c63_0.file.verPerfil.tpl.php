@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-27 04:50:44
+/* Smarty version 3.1.32, created on 2018-05-27 05:02:34
   from 'C:\xampp\htdocs\aventon\webcontent\view\verPerfil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0a1d042138d2_56990288',
+  'unifunc' => 'content_5b0a1fcab7c526_93068699',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5b0a0a5fc8edade6bd0c22cceb297cdf7bec3c63' => 
     array (
       0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\verPerfil.tpl',
-      1 => 1527389440,
+      1 => 1527390153,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0a1d042138d2_56990288 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0a1fcab7c526_93068699 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- Page Content -->
     <div class="container">
       <!-- Portfolio Item Row -->
 	  	
-      <div class="row justify-content-md-center">
-		<div class="col-6		my-4 mb-8 border h50">
-			algo
+      <div class="row ">
+		<div class="col-3 my-4 mb-8 border mr-4 h-50">
+			
+			<img class="m-2" src="/aventon/webcontent/img/default/avatar.jpg">
 		</div>
         <div class="col-6		my-4 mb-8 border">
 			

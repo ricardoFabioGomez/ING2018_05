@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-28 06:29:53
-  from 'C:\xampp\htdocs\aventon\webcontent\view\verVehiculos.tpl' */
+/* Smarty version 3.1.32, created on 2018-05-28 06:29:56
+  from 'C:\xampp\htdocs\aventon\webcontent\view\modificarVehiculo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0b85c1af7787_06563832',
+  'unifunc' => 'content_5b0b85c474e967_18913838',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'aee0b9ade9333678adc8d3f4c6fe0964701f5eac' => 
+    '45f6fc984899408ebaa5852a9b24c7f8985a4ec4' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\verVehiculos.tpl',
-      1 => 1527481781,
+      0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\modificarVehiculo.tpl',
+      1 => 1527481769,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0b85c1af7787_06563832 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0b85c474e967_18913838 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- Page Content -->
     <div class="container" style="height:35em">
       <!-- Portfolio Item Row -->
@@ -30,16 +30,16 @@ function content_5b0b85c1af7787_06563832 (Smarty_Internal_Template $_smarty_tpl)
         <div align="center" class="col-6 my-4 mb-8 align-items-center border">
 			
 			
-			<form id="myForm" action="/aventon/vehiculo/guardar" method="post">
+			<form id="myForm" action="/aventon/vehiculo/modificar" method="post">
 				<div align="center">
 				<h4 class="my-3 center">
-					Crear Vehiculo
+					Modificar Vehiculo
 					
 			</h4>
 			</div>
 			   <div class="form-group row">
 			    <label for="patente" class=" col-form-label col-4 ">* Patente</label>
-				<input type="text" class="form-control col-4" name="patente" id="patente" value="<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getPatente();?>
+				<input type="text" class="form-control col-4" readonly name="patente" id="patente" value="<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getPatente();?>
 " >(Ej. ABC123)
 				
 			  </div>
@@ -55,8 +55,7 @@ function content_5b0b85c1af7787_06563832 (Smarty_Internal_Template $_smarty_tpl)
 			  </div>
 			  <div class="form-group row">
 				<label for="cant" class=" col-form-label col-4">* Pasajeros</label>
-				<select class="form-control col-4" name="cant_pasajeros" id="cant" value="<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getCantPasajero();?>
-">
+				<select class="form-control col-4" name="cant_pasajeros" id="cant" >
 					<option value="">Seleccione</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -64,68 +63,16 @@ function content_5b0b85c1af7787_06563832 (Smarty_Internal_Template $_smarty_tpl)
 					<option value="4">4</option>
 				</select>
 			  </div>		
-			  
+			  <input name="id" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getId();?>
+">
 			  <button class="btn btn-primary" type="button" onclick="validarCampos()">
-				Guardar
+				Modificar
 			  </button>
 			</form>
 			
         </div>
       </div>
-	  <div class="row justify-content-md-center">
-		<div class="col-6">
-			<table class="table table-hover ">
-			  <thead>
-				<tr>
-				  <th scope="col">patente</th>
-				  <th scope="col">modelo</th>
-				  <th scope="col">marca</th>
-				  <th scope="col">pasajeros</th>
-				  <th scope="col">Acciones</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<?php if (!empty($_smarty_tpl->tpl_vars['vehiculos']->value)) {?>
-				<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['vehiculos']->value, 'vehiculo');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['vehiculo']->value) {
-?>
-					<tr>
-					  <th scope="row"><?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getPatente();?>
-</th>
-					  <td><?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getModelo();?>
-</td>
-					  <td><?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getMarca();?>
-</td>
-					  <td><?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getCantPasajero();?>
-</td>
-					  <td><a href="/aventon/vehiculo/verVehiculo/<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getId();?>
-">Modificar</a><br>
-						<a href="/aventon/vehiculo/eliminar/<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getId();?>
-">eliminar</a>
-					  </td>
-					  
-					</tr>
-				<?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-				<?php } else { ?>
-				  <tr>
-					<td colspan="5"> No hay datos</td>
-				  </tr>
-				<?php }?>
-
-			  
-				
-
-			  </tbody>
-			</table>
-		</div>
-		
-	  </div>
-	  
+	 
       <!-- /.row -->
     </div>
     <!-- /.container -->
@@ -134,12 +81,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 	<?php echo '<script'; ?>
 >
 		$(document).ready(function(){
-			  <?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
-				var mensaje =  new Array();
-				mensaje[mensaje.length] = "La patente ya esta registrada.";
-				mostrarAviso(mensaje);	
-			<?php }?>
+			var cant = "<?php echo $_smarty_tpl->tpl_vars['vehiculo']->value->getCantPasajero();?>
+";
+			$("#cant").val(cant);
 		});
+
 		
 		function validarCampos(){
 			var mensaje =  new Array();

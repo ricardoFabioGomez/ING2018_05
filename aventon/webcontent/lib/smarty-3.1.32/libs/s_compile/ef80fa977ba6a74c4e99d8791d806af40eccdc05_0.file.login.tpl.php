@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-27 01:28:09
+/* Smarty version 3.1.32, created on 2018-05-28 04:33:19
   from 'C:\xampp\htdocs\aventon\webcontent\view\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b09ed89556a70_99303731',
+  'unifunc' => 'content_5b0b6a6f20df41_57248021',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef80fa977ba6a74c4e99d8791d806af40eccdc05' => 
     array (
       0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\login.tpl',
-      1 => 1527376375,
+      1 => 1527474794,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b09ed89556a70_99303731 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0b6a6f20df41_57248021 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- Page Content -->
     <div class="container">
       <!-- Portfolio Item Row -->
@@ -57,6 +57,13 @@ function content_5b09ed89556a70_99303731 (Smarty_Internal_Template $_smarty_tpl)
     </div>
 	<?php echo '<script'; ?>
 >
+		$(document).ready(function(){
+			<?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
+			var mensaje =  new Array();
+			mensaje[mensaje.length] = "Usuario incorrecto";
+			mostrarAviso(mensaje);	
+			<?php }?>
+		});
 		function validarCampos(){
 			var mensaje =  new Array();
 			
