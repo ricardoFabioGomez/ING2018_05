@@ -16,6 +16,21 @@ class UsuarioService{
 		$result = Db::select($query);
 		//print_r($result);
 		if($result != null && !empty($result)){
+			$u = new UsuarioDTO($result[0]);
+			
+			return $u;
+		}
+		else{
+			return null;
+		}
+	}
+	public function findUserByUserField($userParams){
+		$user = Db::quote($userParams);
+				$query = "select * from aventon_usuario where user = $user";
+		//echo $query;
+		$result = Db::select($query);
+		print_r($result);
+		if($result != null && !empty($result)){
 			return new UsuarioDTO($result[0]);
 		}
 		else{
@@ -29,7 +44,9 @@ class UsuarioService{
 		$result = Db::select($query);
 		//print_r($result);
 		if($result != null && !empty($result)){
-			return new UsuarioDTO($result[0]);
+			$u = new UsuarioDTO($result[0]);
+			$u->setCalificacion(CalificacionService::obtenerPuntaje($u->getUserId()));		
+			return $u;
 		}
 		else{
 			return null;

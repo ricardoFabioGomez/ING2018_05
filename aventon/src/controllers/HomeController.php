@@ -18,6 +18,7 @@ public function home(){
 	$viajes = ViajeService::buscarTodos();
 	foreach($viajes as $viaje){
 		$viaje->setUsuario(UsuarioService::findUserById($viaje->getIdUsuario()));			
+
 	}
 	$smTemplate = new SMTemplate();
 	$smTemplate->render("home",["viajes" => $viajes]);	

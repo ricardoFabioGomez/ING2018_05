@@ -18,7 +18,29 @@ class UsuarioDTO implements Serializable{
 	private $direccion;
 	private $depto;
 	private $email;
-
+	
+	//
+	private $estado;
+	private $calificacion;
+	private $idViajero;
+		public function getIdViajero(){
+		return $this->idViajero;
+	}
+	public function setIdViajero($idViajero){
+		$this->idViajero = $idViajero;
+	}
+	public function getCalificacion(){
+		return $this->calificacion;
+	}
+	public function setCalificacion($calificacion){
+		$this->calificacion = $calificacion;
+	}
+	public function getEstado(){
+		return $this->estado;
+	}
+	public function setEstado($estado){
+		$this->estado = $estado;
+	}
 	public function __construct($userDDB = null){
 		if($userDDB != null){
 			if(isset($userDDB["user_id"]))

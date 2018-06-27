@@ -13,7 +13,30 @@ class ViajeDTO{
 	private $costo;
 	private $tiempoEstimado;
 	private $dias;
+	//
+	private $aceptado;
+	//
+	private $lugaresDisponibles;
+	//
+	private $vehiculo;
+	//
 	
+	private $viajesRecurrentes;
+	
+	
+	public function getViajesRecurrentes(){
+		return $this->viajesRecurrentes;
+	}
+	public function setViajesRecurrentes($viajesRecurrentes){
+		$this->viajesRecurrentes = $viajesRecurrentes;
+	}
+	
+	public function getVehiculo(){
+		return $this->vehiculo;
+	}
+	public function setVehiculo($vehiculo){
+		$this->vehiculo = $vehiculo;
+	}
 	public function __construct($viajeDDB = null){
 		if($viajeDDB != null){
 			if(isset($viajeDDB["id"])){
@@ -34,6 +57,28 @@ class ViajeDTO{
 				$this->dias = $viajeDDB["dias"];
 			}
 		}
+	}
+	public function getLugaresDisponibles(){
+		return $this->lugaresDisponibles;
+	}
+	public function setLugaresDisponibles($lugaresDisponibles){
+		$this->lugaresDisponibles = $lugaresDisponibles;
+	}
+	public function setAceptado($aceptado){
+		$this->aceptado = $aceptado;
+	}
+	public function getAceptado(){
+		return $this->aceptado;
+	}
+	public function isFinalizado(){
+		$hoy = DateAventonHelper::getFechaActual()." ".DateAventonHelper::getMinutoHoraActual();
+		$hoy = DateAventonHelper::formatDate($hoy, null);
+		$fecha = DateAventonHelper::formatFechaFront($this->getFecha());
+		$fecha = ($fecha)." ".($this->getHora());
+		$fd = DateAventonHelper::formatDate($fecha, null);
+		return DateAventonHelper::compare($fd, $hoy) < 0;
+		
+		
 	}
 	public function getDias(){
 	return 	$this->dias;
@@ -73,6 +118,9 @@ class ViajeDTO{
 	}
 	public function getFecha(){
 		return $this->fecha;
+	}
+	public function getFechaFrontEnd(){
+		return DateAventonHelper::formatFechaFront($this->getFecha());
 	}
 	public function setFecha($fecha){
 		$this->fecha = $fecha;

@@ -1,8 +1,8 @@
 <?php 
 class VehiculoService{
 	public function insertVehiculo($vehiculo){
-		$query = "INSERT INTO aventon_vehiculo (patente,modelo,marca,cant_pasajeros,id_usuario)".
-		  "VALUES ('".$vehiculo->getPatente()."','". $vehiculo->getModelo()."','". $vehiculo->getMarca()."',". $vehiculo->getCantPasajero().",". $vehiculo->getIdUsuario().")"; 
+		$query = "INSERT INTO aventon_vehiculo (patente,modelo,marca,cant_pasajeros,id_usuario, is_delete)".
+		  "VALUES ('".$vehiculo->getPatente()."','". $vehiculo->getModelo()."','". $vehiculo->getMarca()."',". $vehiculo->getCantPasajero().",". $vehiculo->getIdUsuario().",0)"; 
 		$result = Db::query($query); //usar para delete insert update
 		
 		
@@ -17,7 +17,7 @@ class VehiculoService{
 	}
 	
 	public function buscarVehiculos($idUsuarioParam){
-		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam ";
+		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam and is_delete <> 1";
 		$result = Db::select($query);
 		$vehiculos = array();
 		foreach($result as $vehiculoDDb){
@@ -27,9 +27,8 @@ class VehiculoService{
 		return $vehiculos;
 	}
 	public function eliminarVehiculo($idParam){
-		$id = Db::quote($idParam);
-		$query="Delete from aventon_vehiculo where id = $idParam";
-		$result = Db::query($query);
+		$query ="UPDATE aventon_vehiculo SET is_delete=1  WHERE  id=$idParam";
+		$result = Db::query($query); //usar para delete insert update
 	}
 	
 	public function obtenerVehiculo($idParam, $idUsuarioParam){
@@ -45,10 +44,25 @@ class VehiculoService{
 		}
 		
 	}
+	public function obtenerVehiculoById($idParam){
+		$query="select * from aventon_vehiculo where id = $idParam ";
+		
+		$result = Db::select($query);
+		
+		if($result != null && !empty($result)){
+			return new VehiculoDTO($result[0]);
+		}
+		else{
+			return null;
+		}
+		
+	}
 	
-	public function existPatente($patenteParam, $idUsuarioParam){
+
+	
+	public function existPatente($patenteParam){
 		$patente = Db::quote($patenteParam);
-		$query="select * from aventon_vehiculo where id_usuario = $idUsuarioParam and patente = $patente";
+		$query="select * from aventon_vehiculo where  patente = $patente and is_delete <> 1";
 		$result = Db::select($query);
 		if($result != null && !empty($result)){
 			return new VehiculoDTO($result[0]);
@@ -57,6 +71,8 @@ class VehiculoService{
 			return null;
 		}
 	}
+	
+	
 	
 }
 

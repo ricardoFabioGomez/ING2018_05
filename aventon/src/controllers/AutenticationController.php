@@ -38,15 +38,20 @@ public function login(){
 		SessionHelper::validateSession();
 		header('Location: /aventon');
 	}catch(SessionException $e){
-		$user = UsuarioService::findUser($_POST["user_name"], $_POST["user_pass"]);
-		//echo $user;
+		$user = UsuarioService::findUserByUserField($_POST["user_name"]);
 		if($user != null){
-			SessionHelper::openSession($user);	
-			header('Location: /aventon');
+			if($user->getPassword() ==  $_POST["user_pass"]){
+				SessionHelper::openSession($user);	
+				header('Location: /aventon');	
+			}
+			else{
+				SessionHelper::putInSession("error", "Clave incorrecta.");
+				header('Location: /aventon/authentication');
+			}
 		}else{
-			SessionHelper::putInSession("error", true);
+			SessionHelper::putInSession("error", "Usuario no existe.");
 			header('Location: /aventon/authentication');
-		}			
+		}	
 	}	
 }
 
