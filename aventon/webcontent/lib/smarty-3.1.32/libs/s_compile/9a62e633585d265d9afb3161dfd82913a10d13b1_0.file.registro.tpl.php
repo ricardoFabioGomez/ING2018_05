@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-27 04:03:39
+/* Smarty version 3.1.32, created on 2018-06-16 20:14:10
   from 'C:\xampp\htdocs\aventon\webcontent\view\registro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0a11fbdc9744_09401466',
+  'unifunc' => 'content_5b25537225b4f5_61504038',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9a62e633585d265d9afb3161dfd82913a10d13b1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\registro.tpl',
-      1 => 1527386611,
+      1 => 1529172830,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0a11fbdc9744_09401466 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b25537225b4f5_61504038 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- Page Content -->
+ <style>
+	​
+ </style>
     <div class="container">
       <!-- Portfolio Item Row -->
 	  	
@@ -82,7 +85,20 @@ function content_5b0a11fbdc9744_09401466 (Smarty_Internal_Template $_smarty_tpl)
 	  <?php echo '<script'; ?>
 >
 		$(document).ready(function(){
-			$("#fecha_naci").datepicker({ minDate:null, maxDate: "0D", dateFormat:"dd/mm/yy"});	
+			 $("#fecha_naci").datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'MM yy',
+		maxDate:"-17Y",
+		dateFormat:"dd/mm/yy",
+        onClose: function(dateText, inst) { 
+            //var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            //var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            //$(this).datepicker('setDate', new Date(year, month, 1));
+        }
+    });
+			//$().datepicker({ minDate:null, maxDate: "0D", dateFormat:"dd/mm/yy"});	
 			<?php if (isset($_smarty_tpl->tpl_vars['IS_Error']->value)) {?>
 				var mensaje =  new Array();
 				mensaje[mensaje.length] = "El nombre de usuario o el email ya existen.";
@@ -120,10 +136,12 @@ function content_5b0a11fbdc9744_09401466 (Smarty_Internal_Template $_smarty_tpl)
 					mensaje[mensaje.length] = "El formato de la fecha es incorrecta";	
 				}
 				else{
-					var date = new Date($("#fecha_naci").val());
+					var dateString = $("#fecha_naci").val().split("/");
+					var date = new Date(dateString[2], dateString[1] - 1, dateString[0]);
 					var hoy = new Date();
+					hoy.setFullYear(hoy.getFullYear() - 17);
 					if(date > hoy){
-						mensaje[mensaje.length] = "La fecha de nacimiento debe ser menor al dia de hoy.";	
+						mensaje[mensaje.length] = "La fecha de nacimiento es incorrecta, el usuario debe ser mayor de edad.";	
 					}	
 				}
 			}

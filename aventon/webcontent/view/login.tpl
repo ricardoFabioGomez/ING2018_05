@@ -36,7 +36,7 @@
 		$(document).ready(function(){
 			{if isset($error)}
 			var mensaje =  new Array();
-			mensaje[mensaje.length] = "Usuario incorrecto";
+			mensaje[mensaje.length] = "{$error}";
 			mostrarAviso(mensaje);	
 			{/if}
 		});

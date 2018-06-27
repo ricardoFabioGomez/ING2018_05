@@ -4,19 +4,17 @@
 	  	
       <div class="row justify-content-md-center">
 
-        <div align="center" class="col-6 my-4 mb-8 align-items-center border">
-			
-			
-			<form id="myForm" action="/aventon/vehiculo/modificar" method="post">
+        <div class="col-md-6 my-4 mb-8 border">
+			<form id="myForm" action="/aventon/vehiculo/guardar" method="post">
 				<div align="center">
 				<h4 class="my-3 center">
-					Modificar Vehiculo
+					Crear Vehiculo
 					
 			</h4>
 			</div>
 			   <div class="form-group row">
 			    <label for="patente" class=" col-form-label col-4 ">* Patente</label>
-				<input type="text" class="form-control col-4" readonly name="patente" id="patente" value="{$vehiculo->getPatente()}" >(Ej. ABC123)
+				<input type="text" class="form-control col-4" name="patente" id="patente" value="{$vehiculo->getPatente()}" >(Ej. ABC123)
 				
 			  </div>
 			   <div class="form-group row">
@@ -29,7 +27,7 @@
 			  </div>
 			  <div class="form-group row">
 				<label for="cant" class=" col-form-label col-4">* Pasajeros</label>
-				<select class="form-control col-4" name="cant_pasajeros" id="cant" >
+				<select class="form-control col-4" name="cant_pasajeros" id="cant" value="{$vehiculo->getCantPasajero()}">
 					<option value="">Seleccione</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -37,32 +35,30 @@
 					<option value="4">4</option>
 				</select>
 			  </div>		
-			  <input name="id" type="hidden" value="{$vehiculo->getId()}">
+			  
 			  <button class="btn btn-primary" type="button" onclick="validarCampos()">
-				Modificar
+				Guardar
 			  </button>
 			</form>
-			
         </div>
       </div>
-	 
-      <!-- /.row -->
-    </div>
-    <!-- /.container -->
-	
-
-	<script>
+	  <script>
 		$(document).ready(function(){
-			var cant = "{$vehiculo->getCantPasajero()}";
-			$("#cant").val(cant);
-			{if isset($mensaje)}
+			  {if isset($error) }
 				var mensaje =  new Array();
-				mensaje[mensaje.length] = "{$mensaje}";
-				mostrarAviso(mensaje);
+				mensaje[mensaje.length] = "La patente ya esta registrada en el sistema.";
+				mostrarAviso(mensaje);	
 			{/if}
+			 {if isset($OK) }
+				var mensaje =  new Array();
+				mensaje[mensaje.length] = "Se ha guardado correctamente.";
+				mostrarAviso(mensaje, function(){
+					$("#myForm").prop("action","/aventon/vehiculo/listarPorGuardar" );
+					$("#myForm").submit();
+				});	
+			{/if}
+			 
 		});
-
-		
 		{literal}
 		function validarCampos(){
 			var mensaje =  new Array();
@@ -93,5 +89,8 @@
 			
 		}
 		{/literal}
-	</script>
-
+	  </script>
+      <!-- /.row -->
+    </div>
+    <!-- /.container --> 
+	

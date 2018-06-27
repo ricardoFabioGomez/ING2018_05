@@ -1,4 +1,7 @@
  <!-- Page Content -->
+ <style>
+	​
+ </style>
     <div class="container">
       <!-- Portfolio Item Row -->
 	  	
@@ -49,7 +52,20 @@
 	
 	  <script>
 		$(document).ready(function(){
-			$("#fecha_naci").datepicker({ minDate:null, maxDate: "0D", dateFormat:"dd/mm/yy"});	
+			 $("#fecha_naci").datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'MM yy',
+		maxDate:"-17Y",
+		dateFormat:"dd/mm/yy",
+        onClose: function(dateText, inst) { 
+            //var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            //var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            //$(this).datepicker('setDate', new Date(year, month, 1));
+        }
+    });
+			//$().datepicker({ minDate:null, maxDate: "0D", dateFormat:"dd/mm/yy"});	
 			{if isset($IS_Error) }
 				var mensaje =  new Array();
 				mensaje[mensaje.length] = "El nombre de usuario o el email ya existen.";
@@ -87,11 +103,13 @@
 					mensaje[mensaje.length] = "El formato de la fecha es incorrecta";	
 				}
 				else{
-					//var date = new Date($("#fecha_naci").val());
-					//var hoy = new Date();
-					//if(date > hoy){
-					//	mensaje[mensaje.length] = "La fecha de nacimiento debe ser menor al dia de hoy.";	
-					//}	
+					var dateString = $("#fecha_naci").val().split("/");
+					var date = new Date(dateString[2], dateString[1] - 1, dateString[0]);
+					var hoy = new Date();
+					hoy.setFullYear(hoy.getFullYear() - 17);
+					if(date > hoy){
+						mensaje[mensaje.length] = "La fecha de nacimiento es incorrecta, el usuario debe ser mayor de edad.";	
+					}	
 				}
 			}
 			//valido el email

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-28 06:26:40
+/* Smarty version 3.1.32, created on 2018-06-24 22:16:26
   from 'C:\xampp\htdocs\aventon\webcontent\view\layout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0b8500c3f758_24224510',
+  'unifunc' => 'content_5b30426a2a4ab3_78413519',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '95ba536e2a6c82b78aab4d3751451b4a62d5ac80' => 
     array (
       0 => 'C:\\xampp\\htdocs\\aventon\\webcontent\\view\\layout.tpl',
-      1 => 1527481596,
+      1 => 1529889380,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0b8500c3f758_24224510 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b30426a2a4ab3_78413519 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -54,18 +54,56 @@ function content_5b0b8500c3f758_24224510 (Smarty_Internal_Template $_smarty_tpl)
 >
 	<?php echo '<script'; ?>
 >
-		function mostrarAviso(mensajes){
+		function mostrarAviso(mensajes, onCloseHandler){
 			$("#mensajeModal").children().remove();
 			$.each(mensajes,function(key, value){
 				$("#mensajeModal").append("<p>" + value + "</p>");	
 			})
 			
+		
 			$("#myModal").modal();
+			$('#myModal').on('hide.bs.modal', function (e) {
+				  // do something…
+				  if(onCloseHandler){
+					onCloseHandler();
+				}
+			})
+			
+		}
+		function mostrarAvisoOpcion(mensajes, onSucessHandler, onClosehandler){
+			$("#mensajeModal2").children().remove();
+			$.each(mensajes,function(key, value){
+				$("#mensajeModal2").append("<p>" + value + "</p>");	
+			})
+			
+		
+			$("#myModalOpcion").modal();
+			$('#myModalOpcion').on('hide.bs.modal', function (e) {
+				  // do something…
+				  if(onClosehandler){
+					onClosehandler();
+				}
+			});
+			$('#aceptar').on('click', function (e) {
+				  // do something…
+				  if(onSucessHandler){
+					onSucessHandler();
+				}
+			});
+			
 		}
 		
 	<?php echo '</script'; ?>
 >
-	
+	<style>
+		.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+}
+	</style>	
   </head>
 
   <body>
@@ -102,8 +140,14 @@ function content_5b0b8500c3f758_24224510 (Smarty_Internal_Template $_smarty_tpl)
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				  <a class="dropdown-item" href="/aventon/verPerfil">Ver mi perfil</a>
-				  <a class="dropdown-item" href="/aventon/viaje/listarViajes">Ver mis Viajes</a>
-				  <a class="dropdown-item" href="/aventon/vehiculo">Ver mis Vehiculos</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="/aventon/vehiculo/nuevo">Crear Vehiculo</a>
+				  <a class="dropdown-item" href="/aventon/vehiculo/listar">Ver mis Vehiculos</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="/aventon/viaje/listarViajes">Ver mis Viajes puntuales</a>
+				  <a class="dropdown-item" href="/aventon/viajeRecurrente/listarViajes">Ver mis Viajes recurrentes</a>
+				  <a class="dropdown-item" href="/aventon/viaje/listarViajesRealizados">Ver mis sucripciones a viajes</a>
+				  
 				  <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="/aventon/authentication/logout">Salir</a>
 				</div>
@@ -117,7 +161,7 @@ function content_5b0b8500c3f758_24224510 (Smarty_Internal_Template $_smarty_tpl)
 	<?php echo $_smarty_tpl->tpl_vars['__content']->value;?>
 
 
-    <footer class="py-5 bg-dark">
+    <footer class=" py-5 mb-1 bg-dark">
      	<!-- Modal -->
 		  <div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog">
@@ -131,12 +175,31 @@ function content_5b0b8500c3f758_24224510 (Smarty_Internal_Template $_smarty_tpl)
 				  
 				</div>
 				<div class="modal-footer">
-				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			  </div>
 			  
 			</div>
 		</div>	
+		  <div class="modal fade" id="myModalOpcion" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h4 class="modal-title">Notificacion</h4>
+				</div>
+				<div class="modal-body" id="mensajeModal2">
+				  
+				</div>
+				<div class="modal-footer">
+				  <button id="aceptar" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button> 	
+				  <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				</div>
+			  </div>
+			  
+			</div>
+		</div>
     <!-- Footer -->
 	    
 
